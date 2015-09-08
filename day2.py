@@ -8,14 +8,14 @@ __author__ = 'juliajia'
 class stack:
 
     errormessage = 'error'
-    def __init__(self, stack_name, num = 0):
-        self.stack_name = []
+    def __init__(self,  num = 0):
+        self.stack_list = []
         self.n = num
     def pop(self):
-        if self.stack_name == []:
+        if self.stack_list == []:
             return self.errormessage
         else:
-            a = self.stack_name.pop()
+            a = self.stack_list.pop()
             self.n = self.n - 1
         return a
 

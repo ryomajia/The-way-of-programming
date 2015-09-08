@@ -13,8 +13,8 @@ def _create_mongodb_client(host, port, db_name, collection_name):
     db = client[db_name]
     collection = db[collection_name]
     return collection
-def tmall():
-    coll = _create_mongodb_client('pl-prod-001.chinacloudapp.cn', 53493, 'item_styleai-shopping', 'tmall')
+def styleai_shopping_image_list():
+    coll = _create_mongodb_client('pl-prod-001.chinacloudapp.cn', 53493, 'image_styleai-shopping', 'raw')
     cursor = coll.find()
     dst = next(cursor, None)
     while dst is not None:
@@ -23,14 +23,7 @@ def tmall():
     cursor.close()
 
 
-def yohobuy():
-    coll = _create_mongodb_client('pl-prod-001.chinacloudapp.cn', 53493, 'item_styleai-shopping', 'yohobuy')
-    cursor = coll.find()
-    dst = next(cursor, None)
-    while dst is not None:
-        yield dst
-        dst = next(cursor, None)
-    cursor.close()
+
 
 def _enumerate_blob_container(store, container_name):
     next_marker = None
@@ -61,13 +54,33 @@ def _enumerate_blob(container_name):
         url = 'https://pbgcnnorth.blob.core.chinacloudapi.cn/' + container_name + '/' + blob.name
         yield (id, blob.name, url)
 
+def create_repetition_elements_list(list_name):
+    import collections
+    print [item for item, count in collections.Counter(list_name).items() if count > 1]
 
-pics = {id: None for id, name, url in _enumerate_blob('styleai-shopping-webcache')}
-infs_tmall = [x for x in tmall()]
-infs_yohobuy = [x for x in yohobuy()]
-#for i in infs :
-#    print i['domain']
+def create_without_repetition_elements_list(list_name):
+    print len(set(list_name))
 
-print len(infs_tmall) + len(infs_yohobuy)
+infs_styleai_shopping_image_list = [x for x in styleai_shopping_image_list()]
 
-print len(pics)
+
+blob_image_list = []
+infs_image_list = []
+infs_only_list = []
+for x in infs_styleai_shopping_image_list:
+    infs_image_list.append(x['sha1'])
+
+for x in _enumerate_blob('styleai-shopping-img-raw'):
+    blob_image_list.append(x[0])
+
+for x in blob_image_list:
+    if x not in infs_image_list:
+        infs_only_list.append(x)
+
+print len(infs_image_list)
+print len(blob_image_list)
+create_repetition_elements_list(infs_image_list)
+create_without_repetition_elements_list(infs_image_list)
+
+print infs_only_list
+
