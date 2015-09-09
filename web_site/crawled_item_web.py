@@ -29,7 +29,7 @@ def get_item_id(collections):
 def find_tmall_item():
     if request.method == "GET":
         item_id_list = get_item_id("tmall")
-        count = len(item_id_list)
+        count = len(item_id_list) - 1
         item_id = item_id_list[randint(0,count)]
         results = db['tmall'].find({"_id": item_id})
         json_results=[]
