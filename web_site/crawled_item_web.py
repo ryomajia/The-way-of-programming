@@ -8,7 +8,7 @@ import pymongo
 
 app = Flask(__name__)
 
-mongoClient = pymongo.MongoClient("localhost",27017)
+mongoClient = pymongo.MongoClient("pl-prod-001.chinacloudapp.cn",53493)
 db = mongoClient['item_styleai-shopping']
 
 def toJson(data):
