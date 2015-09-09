@@ -64,23 +64,42 @@ def create_without_repetition_elements_list(list_name):
 infs_styleai_shopping_image_list = [x for x in styleai_shopping_image_list()]
 
 
-blob_image_list = []
-infs_image_list = []
-infs_only_list = []
+#blob_image_list = []
+#infs_image_list = []
+##infs_only_list = []
+md5_list = []
+sha1_list = []
+id_list = []
+other_list = []
+md5_id_list = []
+sha1_id_list = []
 for x in infs_styleai_shopping_image_list:
-    infs_image_list.append(x['sha1'])
+    #infs_image_list.append(x['sha1'])
+    id_list.append(x['id'])
+    md5_list.append(x['md5'])
+    sha1_list.append(x['sha1'])
+for x in id_list:
+    if x not in sha1_list:
+        if x in md5_list:
+            md5_id_list.append(x)
+        else:
+            other_list.append(x)
 
-for x in _enumerate_blob('styleai-shopping-img-raw'):
-    blob_image_list.append(x[0])
+print len(md5_id_list)
+print len(other_list)
+print md5_id_list
+print other_list
+#for x in _enumerate_blob('styleai-shopping-img-raw'):
+#    blob_image_list.append(x[0])
 
-for x in blob_image_list:
-    if x not in infs_image_list:
-        infs_only_list.append(x)
+#for x in blob_image_list:
+#    if x not in infs_image_list:
+#        infs_only_list.append(x)
 
-print len(infs_image_list)
-print len(blob_image_list)
-create_repetition_elements_list(infs_image_list)
-create_without_repetition_elements_list(infs_image_list)
+#print len(infs_image_list)
+#print len(blob_image_list)
+#create_repetition_elements_list(infs_image_list)
+#create_without_repetition_elements_list(infs_image_list)
 
-print infs_only_list
+#print infs_only_list
 
