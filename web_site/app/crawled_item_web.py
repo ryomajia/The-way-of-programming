@@ -15,30 +15,25 @@ db = mongoClient['item_styleai-shopping']
 def toJson(data):
     return json.dumps(data,default=json_util.default)
 
-def get_item_id(collections):
-    item_id_list = []
-    item_list = []
-    results = db[collections].find()
-    for i in results:
-        item_list.append(i)
-    for i in item_list:
-        item_id_list.append(i["_id"])
-    return item_id_list
+
+
+
 
 def find_item(item_name):
     if request.method == "GET":
-        item_id_list = get_item_id(item_name)
-        count = len(item_id_list) - 1
-        item_id = item_id_list[randint(0,count)]
-        results = db['tmall'].find({"_id": item_id})
+        count = db[item_name].find().count()
+        item_id = randint(0,count - 1)
+        results = db[item_name].find().limit(1).skip(item_id)
         json_results=[]
         for result in results:
             json_results.append(result)
-        return toJson(json_results)
+    return toJson(json_results)
 
-def json_value(item_name,key_name):
+
+def json_dict(item_name):
     json_dict = json.loads(find_item(item_name))[0]
-    return json_dict[key_name]
+    return json_dict
+
 
 
 
@@ -52,27 +47,37 @@ def index():
 
 @app.route('/tmall',methods=['GET'])
 
-def item_json(item_name = "tmall"):
-    json__id = json_value(item_name,"_id")["$oid"]
-    json_url_hash = json_value(item_name,"url_hash")
-    json_review_count = json_value(item_name,"review_count")
-    json_attr = json_value(item_name,"attr")
-    json_title = json_value(item_name,"title")
-    json_price = json_value(item_name,"price")
-    json_url = json_value(item_name,"url")
-    json_domain = json_value(item_name,"domain")
-    json_is_off_the_market = json_value(item_name,"is_off_the_market")
-    json_crawled_datetime = json_value(item_name,"crawled_datetime")
-    json_sell_count = json_value(item_name,"sell_count")
-    json_shop_name = json_value(item_name,"shop_name")
-    json_id = json_value(item_name,"id")
-    json_promote_price = json_value(item_name,"promote_price")
-    json_dict = {"json__id":json__id,"json_url_hash":json_url_hash,"json_review_count":json_review_count,
-                 "json_attr":json_attr,"json_title":json_title,"json_price":json_price,
-                 "json_url":json_url,"json_domain":json_domain,"json_is_off_the_market":json_is_off_the_market,
-                 "json_crawled_datetime":json_crawled_datetime,"json_sell_count":json_sell_count,
-                 "json_shop_name":json_shop_name,"json_id":json_id,"json_promote_price":json_promote_price}
-    return render_template("json.html",json_dict = json_dict)
+def item_tmall_json(item_name = "tmall"):
+    item_dict = json_dict(item_name)
+    item_keys_list = item_dict.keys()
+    return render_template("json.html",json_key = item_keys_list,json_dict = item_dict)
 
+@app.route('/yohobuy',methods=['GET'])
+
+def item_yohobuy_json(item_name = "yohobuy"):
+    item_dict = json_dict(item_name)
+    item_keys_list = item_dict.keys()
+    prop_images_url_list = []
+    gallery_images_url_list = []
+    extra_images_url_list = []
+    for key in item_keys_list:
+        if key == "prop_images":
+            url_list = item_dict[key]
+            for url in url_list:
+                prop_images_url_list.append(url)
+        elif key == "gallery_images":
+            url_list = item_dict[key]
+            for url in url_list:
+                gallery_images_url_list.append(url)
+        elif key == "extra_images":
+            url_list = item_dict[key]
+            for url in url_list:
+                extra_images_url_list.append(url)
+    prop_length = len(prop_images_url_list)
+    gallery_length = len(gallery_images_url_list)
+    extra_length = len(extra_images_url_list)
+    return render_template("json.html",json_key = item_keys_list,json_dict = item_dict,prop_list = prop_images_url_list,
+                           gallery_list = gallery_images_url_list,extra_list = extra_images_url_list,
+                           prop_length = prop_length,gallery_length = gallery_length,extra_length = extra_length)
 
 
