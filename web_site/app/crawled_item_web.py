@@ -11,6 +11,7 @@ import pymongo
 
 mongoClient = pymongo.MongoClient("pl-prod-001.chinacloudapp.cn",53493)
 db = mongoClient['item_styleai-shopping']
+db_images = mongoClient['image_styleai-shopping']
 
 def toJson(data):
     return json.dumps(data,default=json_util.default)
@@ -34,8 +35,16 @@ def json_dict(item_name):
     json_dict = json.loads(find_item(item_name))[0]
     return json_dict
 
-
-
+def blob_url(list_name,item_name):
+    blob_url_list = []
+    for url in list_name:
+        images = db_images[item_name].find({"url":url})
+        print url.split(".")
+        for image in images:
+            blob_url = "https://pbgcnnorth.blob.core.chinacloudapi.cn/styleai-shopping-img-raw/" + image["sha1"] +\
+                       "." + url.split(".")[4]
+            blob_url_list.append(blob_url)
+    return blob_url_list
 
 @app.route('/')
 @app.route('/index')
@@ -73,11 +82,12 @@ def item_yohobuy_json(item_name = "yohobuy"):
             url_list = item_dict[key]
             for url in url_list:
                 extra_images_url_list.append(url)
+    blob_url_list = blob_url(extra_images_url_list,"raw")
     prop_length = len(prop_images_url_list)
     gallery_length = len(gallery_images_url_list)
     extra_length = len(extra_images_url_list)
     return render_template("json.html",json_key = item_keys_list,json_dict = item_dict,prop_list = prop_images_url_list,
-                           gallery_list = gallery_images_url_list,extra_list = extra_images_url_list,
+                           gallery_list = gallery_images_url_list,extra_list = blob_url_list,
                            prop_length = prop_length,gallery_length = gallery_length,extra_length = extra_length)
 
 
