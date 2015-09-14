@@ -14,7 +14,7 @@
       <tr>
         {% endfor %}
     {% elif key == "gallery_images" %}
-        <tr>
+      <tr>
         <th  rowspan="{{gallery_length}}">{{key}}</th>
         {% for url in gallery_list %}
           <td><img src="{{url}}" style="width:304px;height:228px;"></td>
@@ -22,12 +22,12 @@
       <tr>
         {% endfor %}
     {% elif key == "extra_images" %}
-        <tr>
+      <tr>
         <th  rowspan="{{extra_length}}">{{key}}</th>
         {% for url in extra_list %}
           <td><img src="{{url}}" style="width:304px;height:228px;"></td>
-        </tr>
-        <tr>
+      </tr>
+      <tr>
         {% endfor %}
     {% else %}
       <tr>

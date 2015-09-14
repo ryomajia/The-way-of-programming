@@ -37,16 +37,19 @@ def json_dict(item_name):
     json_dict = json.loads(find_item(item_name))[0]
     return json_dict
 
-def blob_url(list_name,item_name):
+def blob_url(list_name):
     blob_url_list = []
     for url in list_name:
-        images = db_images[item_name].find({"url":url})
-        print url.split(".")
-        for image in images:
-            blob_url = "https://pbgcnnorth.blob.core.chinacloudapi.cn/styleai-shopping-img-raw/" + image["sha1"] +\
-                       "." + url.split(".")[4]
-            blob_url_list.append(blob_url)
+        hash_value = hashlib.sha1(url).hexdigest()
+        url_list = url.split(".")
+        format_count = len(url_list) - 1
+        blob_url = "https://pbgcnnorth.blob.core.chinacloudapi.cn/styleai-shopping-img-raw/" + hash_value +\
+                       "." + url.split(".")[format_count]
+        blob_url_list.append(blob_url)
     return blob_url_list
+
+
+
 
 @app.route('/')
 @app.route('/index')
@@ -61,7 +64,39 @@ def index():
 def item_tmall_json(item_name = "tmall"):
     item_dict = json_dict(item_name)
     item_keys_list = item_dict.keys()
-    return render_template("json.html",json_key = item_keys_list,json_dict = item_dict)
+    prop_images_url_list = []
+    gallery_images_url_list = []
+    extra_images_url_list = []
+    for key in item_keys_list:
+        if key == "prop_images":
+            url_list = item_dict[key]
+            for url in url_list:
+                prop_images_url_list.append(url)
+        elif key == "gallery_images":
+            url_list = item_dict[key]
+            for url in url_list:
+                gallery_images_url_list.append(url)
+        elif key == "extra_images":
+            url_list = item_dict[key]
+            for url in url_list:
+                extra_images_url_list.append(url)
+    blob_url_list = blob_url(extra_images_url_list)
+    prop_blob_url_list = []
+    for i in prop_images_url_list:
+        hash_value = hashlib.sha1(i).hexdigest()
+        url_list = i.split("?")[0].split('.')
+        format_count = len(url_list) - 1
+        url = "https://pbgcnnorth.blob.core.chinacloudapi.cn/styleai-shopping-img-raw/" + \
+              hash_value + "." + i.split('?')[0].split('.')[format_count]
+        prop_blob_url_list.append(url)
+    gallery_blob_url_list = blob_url(gallery_images_url_list)
+    prop_length = len(prop_images_url_list)
+    gallery_length = len(gallery_blob_url_list)
+    extra_length = len(blob_url_list)
+    return render_template("json.html",json_key = item_keys_list,json_dict = item_dict,prop_list = prop_blob_url_list,
+                           gallery_list = gallery_blob_url_list,extra_list = blob_url_list,
+                           prop_length = prop_length,gallery_length = gallery_length,extra_length = extra_length)
+
 
 @app.route('/yohobuy',methods=['GET'])
 
@@ -84,7 +119,7 @@ def item_yohobuy_json(item_name = "yohobuy"):
             url_list = item_dict[key]
             for url in url_list:
                 extra_images_url_list.append(url)
-    blob_url_list = blob_url(extra_images_url_list,"raw")
+    blob_url_list = blob_url(extra_images_url_list)
     prop_blob_url_list = []
     for i in prop_images_url_list:
         hash_value = hashlib.sha1(i).hexdigest()
