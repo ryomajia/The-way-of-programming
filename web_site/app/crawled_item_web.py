@@ -6,12 +6,14 @@ from bson import json_util
 from bson.objectid import ObjectId
 from random import randint
 import pymongo
+import hashlib
 
 
 
 mongoClient = pymongo.MongoClient("pl-prod-001.chinacloudapp.cn",53493)
 db = mongoClient['item_styleai-shopping']
 db_images = mongoClient['image_styleai-shopping']
+
 
 def toJson(data):
     return json.dumps(data,default=json_util.default)
@@ -83,10 +85,17 @@ def item_yohobuy_json(item_name = "yohobuy"):
             for url in url_list:
                 extra_images_url_list.append(url)
     blob_url_list = blob_url(extra_images_url_list,"raw")
+    prop_blob_url_list = []
+    for i in prop_images_url_list:
+        hash_value = hashlib.sha1(i).hexdigest()
+        url = "https://pbgcnnorth.blob.core.chinacloudapi.cn/styleai-shopping-img-raw/" + \
+              hash_value + "." + i.split('?')[0].split('.')[4]
+        prop_blob_url_list.append(url)
+
     prop_length = len(prop_images_url_list)
     gallery_length = len(gallery_images_url_list)
     extra_length = len(extra_images_url_list)
-    return render_template("json.html",json_key = item_keys_list,json_dict = item_dict,prop_list = prop_images_url_list,
+    return render_template("json.html",json_key = item_keys_list,json_dict = item_dict,prop_list = prop_blob_url_list,
                            gallery_list = gallery_images_url_list,extra_list = blob_url_list,
                            prop_length = prop_length,gallery_length = gallery_length,extra_length = extra_length)
 
