@@ -14,7 +14,7 @@ def _create_mongodb_client(host, port, db_name, collection_name):
     collection = db[collection_name]
     return collection
 def styleai_shopping_image_list():
-    coll = _create_mongodb_client('pl-prod-001.chinacloudapp.cn', 53493, 'image_styleai-shopping', 'raw')
+    coll = _create_mongodb_client('pl-prod-001.chinacloudapp.cn', 53493, 'item_styleai-shopping', 'yohobuy')
     cursor = coll.find()
     dst = next(cursor, None)
     while dst is not None:
@@ -74,7 +74,7 @@ other_list = []
 md5_id_list = []
 sha1_id_list = []
 for x in infs_styleai_shopping_image_list:
-    infs_image_list.append(x['sha1'])
+    infs_image_list.append(x)
 #    id_list.append(x['id'])
 #    md5_list.append(x['md5'])
 #    sha1_list.append(x['sha1'])
@@ -89,14 +89,14 @@ for x in infs_styleai_shopping_image_list:
 #print len(other_list)
 #print md5_id_list
 #print other_list
-for x in _enumerate_blob('styleai-shopping-img-raw'):
-    blob_image_list.append(x[0])
+#for x in _enumerate_blob('styleai-shopping-img-raw'):
+#    blob_image_list.append(x[0])
 
-for x in blob_image_list:
-    if x not in infs_image_list:
-        infs_only_list.append(x)
+#for x in blob_image_list:
+#    if x not in infs_image_list:
+#        infs_only_list.append(x)
 
-#print len(infs_image_list)
+print len(infs_image_list)
 #print len(blob_image_list)
 #create_repetition_elements_list(infs_image_list)
 #create_without_repetition_elements_list(infs_image_list)
