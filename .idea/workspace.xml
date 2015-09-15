@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41398df9-c7a0-4adf-91a4-c8d344241952" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dockerfile_crawled_item_web/Dockerfile" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dockerfile_crawled_item_web/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dockerfile_crawled_item_web/base.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dockerfile_crawled_item_web/crawled-item-web-process-manage.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dockerfile_crawled_item_web/crawled-item-web.conf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dockerfile_crawled_item_web/crawled_item_web.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dockerfile_crawled_item_web/json.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dockerfile_crawled_item_web/pip.conf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dockerfile_crawled_item_web/run.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dockerfile_crawled_item_web/supervisord.conf" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web_site/app/item_list.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web_site/flask/bin/activate" afterPath="$PROJECT_DIR$/web_site/flask/bin/activate" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/get_mongodb.py" afterPath="$PROJECT_DIR$/get_mongodb.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web_site/app/templates/json.html" afterPath="$PROJECT_DIR$/web_site/app/templates/json.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mongodb_data.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="The-way-of-programming.iws" />
@@ -69,22 +56,44 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="crawled-item-web-process-manage.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/dockerfile_crawled_item_web/crawled-item-web-process-manage.py">
+      <file leaf-file-name="get_mongodb.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/get_mongodb.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.20071685">
-              <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="6" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pip.conf" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dockerfile_crawled_item_web/pip.conf">
+      <file leaf-file-name="mongodb_data.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mongodb_data.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.45933014">
+              <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="crawled-item-web-process-manage.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dockerfile_crawled_item_web/crawled-item-web-process-manage.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="28" />
+              <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="crawled_item_web.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web_site/app/crawled_item_web.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="44" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -114,16 +123,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="json.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dockerfile_crawled_item_web/json.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.935484">
-              <caret line="18" column="37" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="crawled-item-web.conf" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dockerfile_crawled_item_web/crawled-item-web.conf">
           <provider selected="true" editor-type-id="text-editor">
@@ -138,20 +137,10 @@
         <entry file="file://$PROJECT_DIR$/dockerfile_crawled_item_web/crawled_item_web.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="137" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
+              <caret line="18" column="53" selection-start-line="18" selection-start-column="53" selection-end-line="18" selection-end-column="53" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web_site/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -199,11 +188,13 @@
         <option value="$PROJECT_DIR$/dockerfile_crawled_item_web/crawled-item-web.conf" />
         <option value="$PROJECT_DIR$/dockerfile_crawled_item_web/pip.conf" />
         <option value="$PROJECT_DIR$/dockerfile_crawled_item_web/sources.conf" />
-        <option value="$PROJECT_DIR$/web_site/app/crawled_item_web.py" />
         <option value="$PROJECT_DIR$/dockerfile_crawled_item_web/Dockerfile" />
         <option value="$PROJECT_DIR$/dockerfile_crawled_item_web/crawled-item-web-process-manage.py" />
         <option value="$PROJECT_DIR$/get_mongodb.py" />
         <option value="$PROJECT_DIR$/web_site/app/templates/json.html" />
+        <option value="$PROJECT_DIR$/dockerfile_crawled_item_web/crawled_item_web.py" />
+        <option value="$PROJECT_DIR$/web_site/app/crawled_item_web.py" />
+        <option value="$PROJECT_DIR$/mongodb_data.py" />
       </list>
     </option>
   </component>
@@ -217,7 +208,7 @@
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1920" />
-    <option name="height" value="1134" />
+    <option name="height" value="1133" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -669,11 +660,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1920" height="1134" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1920" height="1133" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30518234" sideWeight="0.48615548" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16986564" sideWeight="0.4659212" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17002882" sideWeight="0.4659212" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32953367" sideWeight="0.4946752" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2496318" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -739,14 +730,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/queue_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/elk.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -803,9 +786,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#72#86#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1023,16 +1004,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web_site/app/crawled_item_web.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="104" column="37" selection-start-line="104" selection-start-column="37" selection-end-line="104" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dockerfile_crawled_item_web/supervisord.conf">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1081,16 +1052,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/get_mongodb.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="73" column="16" selection-start-line="73" selection-start-column="16" selection-end-line="73" selection-end-column="16" />
-          <folding>
-            <element signature="e#72#86#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dockerfile_crawled_item_web/json.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.935484">
@@ -1104,24 +1065,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="28" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dockerfile_crawled_item_web/crawled-item-web.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="43" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dockerfile_crawled_item_web/crawled_item_web.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="137" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1170,10 +1113,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/dockerfile_crawled_item_web/crawled-item-web.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="43" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/dockerfile_crawled_item_web/crawled-item-web-process-manage.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20071685">
-          <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dockerfile_crawled_item_web/crawled_item_web.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="53" selection-start-line="18" selection-start-column="53" selection-end-line="18" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/get_mongodb.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_site/app/crawled_item_web.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mongodb_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45933014">
+          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
           <folding />
         </state>
       </provider>
