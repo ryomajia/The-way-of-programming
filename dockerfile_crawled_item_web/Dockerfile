@@ -32,6 +32,8 @@ COPY crawled_item_web.py /usr/local/src/crawled-item-web/app/
 COPY json.html /usr/local/src/crawled-item-web/app/templates/
 COPY base.html /usr/local/src/crawled-item-web/app/templates/
 COPY __init__.py /usr/local/src/crawled-item-web/app/
+COPY index.html /usr/local/src/crawled-item-web/app/templates/
+COPY search.html /usr/local/src/crawled-item-web/app/templates/
 
 
 

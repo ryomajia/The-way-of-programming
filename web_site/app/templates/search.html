@@ -1,39 +1,15 @@
-<!-- extend base layout -->
-{% extends "base.html" %}
-
-{% block content %}
-    <form action="" method="post">
-      <p>Item_Name: <input type="text" name="item_name" ></p>
-      <p>Item_ID: <input type="text" name="item_id" ></p>
-      <input type="submit" value="Search" >
-    </form>
-    <form action="" method="get">
-      <select name="jumpMenu" id="jumpMenu" onchange="MM_jumpMenu('parent',this,0)">
-       {% for source in sources %}
-          {% if source == current_item %}
-            <option selected value="http://0.0.0.0:5000/{{source}}">{{source}}</option>
-          {% else %}
-            <option value="http://0.0.0.0:5000/{{source}}">{{source}}</option>
-          {% endif %}
-        {% endfor %}
-      </select>
-    </form>
-    <script type="text/javascript">
-    <!--
-    function MM_jumpMenu(targ,selObj,restore){ //v3.0
-    eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
-    if (restore) selObj.selectedIndex=0;
-    }
-    //-->
-    </script>
-  <h1>test</h1>
-  <table border="1" style="width:100%">
+<html>
+  <head>
+    <title>{{title}} - microblog</title>
+  </head>
+  <body>
+      <table border="1" style="width:100%">
   {% for key in json_key %}
     {% if key == "prop_images" %}
       <tr>
         <th  rowspan="{{prop_length}}">{{key}}</th>
         {% for url in prop_list %}
-          <td ><img src="{{url}}" style="width:304px;height:228px;"></td>
+          <td><img src="{{url}}" style="width:304px;height:228px;"></td>
       </tr>
       <tr>
         {% endfor %}
@@ -71,4 +47,5 @@
       </tr>
     {% endif %}
   {% endfor %}
-{% endblock %}
+  </body>
+</html>
